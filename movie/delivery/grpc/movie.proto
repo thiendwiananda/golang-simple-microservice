@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "github.com/thiendwiananda/golang-simple-microservice;grpc";
+
+service MovieHandler {
+    rpc GetMovie (SingleRequest) returns (Movie);
+    rpc SearchMovie (SearchRequest) returns (MovieList);
+}
+
+message SingleRequest {
+    string Id=1;
+}
+
+message SearchRequest {
+    string Searchword=1;
+    string Pagination=2;
+}
+
+message MovieList {
+    repeated Movie Movies = 1;
+}
+
+message Movie {
+    string ImdbID = 1;
+    string Title = 2;
+    string Year = 3;
+    string Rated = 4;
+    string Released = 5;
+    string Runtime = 6;
+    string Genre = 7;
+    string Director = 8;
+    string Writer = 9;
+    string Actors = 10;
+    string Plot = 11;
+    string Language = 12;
+    string Country = 13;
+    string Awards = 14;
+    string Poster = 15;
+    repeated ratings Ratings = 16;
+    string Metascore = 17;
+    string ImdbRating = 18;
+    string ImdbVotes = 19;
+    string Type = 20;
+    string DVD = 21;
+    string BoxOffice = 22;
+    string Production = 23;
+    string Website = 24;
+    string Response = 25;
+    
+    message ratings {
+        string Source = 1;
+        string Value = 2;
+    }
+}
